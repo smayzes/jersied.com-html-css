@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+body {
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.font-bai-jamjuree {
+    font-family: 'Bai Jamjuree', sans-serif;
+}
