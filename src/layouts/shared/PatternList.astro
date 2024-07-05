@@ -1,0 +1,14 @@
+---
+interface Props {
+    patternType: string;
+}
+
+const { patternType } = Astro.props;
+---
+
+<div 
+    class="pattern-list-item flex items-center justify-center border border-solid border-[#CBD4E1] rounded-[8px] w-[80px] h-[80px] md:w-[108px] md:h-[108px] p-1 cursor-pointer"
+    pattern-type={patternType}
+>
+    <slot />
+</div>

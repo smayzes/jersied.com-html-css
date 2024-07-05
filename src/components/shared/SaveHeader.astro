@@ -1,0 +1,36 @@
+---
+interface Props {
+    patternType: string;
+}
+
+const { patternType } = Astro.props;
+---
+
+<div
+    class="jersey-design__save-pattern flex justify-between items-center px-3 sm:px-6 w-full hidden"
+    pattern-type={patternType}
+>
+    <div 
+        class="flex items-center gap-2 cursor-pointer" 
+        
+    >
+        <img
+            src="/shared/icon-arrow-left.svg"
+            class="jersey-design__save-pattern--back"
+            pattern-type={patternType}
+            width="24" height="24" alt="Back"
+        >
+        <span
+            class="jersey-design__save-pattern--heading text-[#F6F8FB] text-base font-bold leading-normal"
+            pattern-type={patternType}
+        >
+            Select
+        </span>
+    </div>
+    <div
+        class="jersey-design__save-pattern--save button-primary cursor-pointer"
+        pattern-type={patternType}
+    >
+        Save
+    </div>
+</div>

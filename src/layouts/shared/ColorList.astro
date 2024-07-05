@@ -1,0 +1,16 @@
+---
+interface Props {
+	colorClass: string;
+    patternType: string;
+}
+
+const { colorClass, patternType } = Astro.props;
+---
+
+<div
+    class:list={['color-list-item items-center justify-center border border-solid border-[#CBD4E1] rounded-[2px] w-[66px] h-[66px] cursor-pointer', colorClass]}
+    pattern-type={patternType}
+    color={colorClass}
+>
+    <slot />
+</div>

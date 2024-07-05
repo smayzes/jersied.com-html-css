@@ -1,0 +1,16 @@
+---
+interface Props {
+	text: string;
+}
+
+const { text} = Astro.props;
+---
+
+<p class="color-selector-heading text-sm text-[#808080] leading-normal font-bold text-center rounded-[20px] mx-7 my-2 relative px-2">
+    <span>{text}</span>
+    <img
+        src="/shared/rounded-pallete.jpg"
+        class="jw-5 rounded-[24px] absolute -left-6 bottom-0"
+        width="24" height="24" alt=""
+    >
+</p>

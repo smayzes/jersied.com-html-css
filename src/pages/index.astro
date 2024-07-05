@@ -1,14 +1,543 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+
+import PatternSelector from '../layouts/shared/PatternSelector.astro';
+import PatternList from '../layouts/shared/PatternList.astro';
+import ColorSelector from '../layouts/shared/ColorSelector.astro';
+import AllColorList from '../components/shared/AllColorList.astro';
+
+import Jersey001 from '../components/jerseys/Jersey001.astro';
+import Jersey002 from '../components/jerseys/Jersey002.astro';
+import Jersey003 from '../components/jerseys/Jersey003.astro';
+import Jersey004 from '../components/jerseys/Jersey004.astro';
+import Jersey005 from '../components/jerseys/Jersey005.astro';
+import Jersey006 from '../components/jerseys/Jersey006.astro';
+import Jersey007 from '../components/jerseys/Jersey007.astro';
+import Jersey008 from '../components/jerseys/Jersey008.astro';
+import Jersey009 from '../components/jerseys/Jersey009.astro';
+import Jersey010 from '../components/jerseys/Jersey010.astro';
+import Jersey011 from '../components/jerseys/Jersey011.astro';
+import Jersey012 from '../components/jerseys/Jersey012.astro';
+import Jersey013 from '../components/jerseys/Jersey013.astro';
+
+import Logo001 from '../components/logos/Logo001.astro';
+import Logo002 from '../components/logos/Logo002.astro';
+import Logo003 from '../components/logos/Logo003.astro';
+import Logo004 from '../components/logos/Logo004.astro';
+import Logo005 from '../components/logos/Logo005.astro';
+
+import Pant001 from '../components/pants/Pant001.astro';
+import Pant002 from '../components/pants/Pant002.astro';
+import Pant003 from '../components/pants/Pant003.astro';
+import Pant004 from '../components/pants/Pant004.astro';
+import Pant005 from '../components/pants/Pant005.astro';
+import Pant006 from '../components/pants/Pant006.astro';
+import Pant007 from '../components/pants/Pant007.astro';
+import Pant008 from '../components/pants/Pant008.astro';
+import Pant009 from '../components/pants/Pant009.astro';
+import Pant010 from '../components/pants/Pant010.astro';
+
+import Sock001 from '../components/socks/Sock001.astro';
+import Sock002 from '../components/socks/Sock002.astro';
+import Sock003 from '../components/socks/Sock003.astro';
+import Sock004 from '../components/socks/Sock004.astro';
+import Sock005 from '../components/socks/Sock005.astro';
+import Sock006 from '../components/socks/Sock006.astro';
+import Sock007 from '../components/socks/Sock007.astro';
+import Sock008 from '../components/socks/Sock008.astro';
+import Sock009 from '../components/socks/Sock009.astro';
+import Sock010 from '../components/socks/Sock010.astro';
+
+import SelectorHeading from '../components/shared/SelectorHeading.astro';
+import ColorSelectorHeading from '../components/shared/ColorSelectorHeading.astro';
+import SaveHeader from '../components/shared/SaveHeader.astro';
+import Input from '../components/shared/Input.astro';
+import Textarea from '../components/shared/Textarea.astro';
+import FontSelector from '../components/shared/FontSelector.astro';
+import LogoUploadModal from '../components/shared/LogoUploadModal.astro';
+import LogoContactModal from '../components/shared/LogoContactModal.astro';
 ---
 
 <Layout title="Jersey Design">
 	<main>
-		<Card
-			href="https://docs.astro.build/"
-			title="Documentation"
-			body="Learn how Astro works and explore the official API docs."
-		/>
+		<section>
+			<div class="">
+				<!-- Design Preview Panel Start -->
+				<div class="jersey-main-preview w-full h-full fixed">
+					<div class="md:max-h-[330px] md:min-h-[330px] w-full md:w-fit mx-auto mt-[50px] md:mt-[100px]">
+						<!-- Jersey Preview (With Logo together) -->
+						<div class="jersey-main-preview__item relative" pattern-type="jersey">
+							<Jersey001 />
+							<div class="jersey-main-preview__item--logo absolute top-[50%] left-[50%] max-w-[80px] -translate-x-1/2 -translate-y-1/2 max-md:w-[12%]">
+								<Logo001 />
+							</div>
+						</div>
+
+						<!-- Pant Preview -->
+						<div class="jersey-main-preview__item relative hidden" pattern-type="pant">
+							<Pant001 />
+						</div>
+
+						<!-- Sock Preview -->
+						<div class="jersey-main-preview__item relative hidden" pattern-type="sock">
+							<Sock001 />
+						</div>
+					</div>
+				</div>
+				<!-- Design Preview Panel End -->
+
+				<!-- Main Deisng Panel Start -->
+				<div class="jersey-main-designer fixed bottom-0 md:left-[50%] duration-200 w-fit">
+					<div class="max-w-[620px] md:min-w-[620px] mx-auto w-[95%] md:w-full">
+						<!-- Top Tabs -->
+						<div class="bg-[#1d2848] rounded-t-[12px] px-[2px] pt-[2px] min-h-[40px] flex items-center overflow-x-auto max-w-[100vw]">
+							<div class="jersey-design__tabs flex md:grid grid-cols-5 text-base md:text-lg text-[#fff] leading-normal font-bold text-center gap-[2px] w-full">
+								<div class="jersey-design__tab py-1 px-4 duration-100 cursor-pointer min-w-[100px] active" pattern-type="jersey">JERSEY</div>
+								<div class="jersey-design__tab py-1 px-4 duration-100 cursor-pointer min-w-[100px]" pattern-type="logo">LOGO</div>
+								<div class="jersey-design__tab py-1 px-4 duration-100 cursor-pointer min-w-[100px]" pattern-type="font">FONT</div>
+								<div class="jersey-design__tab py-1 px-4 duration-100 cursor-pointer min-w-[100px]" pattern-type="pant">PANT</div>
+								<div class="jersey-design__tab py-1 px-4 duration-100 cursor-pointer min-w-[100px]" pattern-type="sock">SOCK</div>
+							</div>
+
+							<SaveHeader patternType="jersey" />
+							<SaveHeader patternType="logo" />
+							<SaveHeader patternType="font" />
+							<SaveHeader patternType="pant" />
+							<SaveHeader patternType="sock" />
+						</div>
+
+						<!-- Jersey Designer -->
+						<div class="jersey-design__jersey-designer active p-4 sm:p-6 h-[480px] bg-[#feffff]" pattern-type="jersey">
+							<div class="selected-header flex flex-col items-center justify-between h-full" >
+								<div class="">
+									<div class="flex flex-col gap-4">
+										<PatternSelector patternType="jersey">
+											<Jersey001 />
+										</PatternSelector>
+										<SelectorHeading text="TAP TO CHANGE" />
+									</div>
+								</div>
+								<div class="custom-scrollbar overflow-y-auto max-h-[200px] h-fit">
+									<div class="flex justify-end">
+										<div class="flex flex-col gap-4">
+											<div class="flex flex-wrap gap-2">
+												<ColorSelector patternType="jersey" colorClass='bg-[#131410]' wording="Black" />
+												<ColorSelector patternType="jersey" colorClass='bg-[#1765B1]' wording="Blue" />
+												<ColorSelector patternType="jersey" colorClass='bg-[#E91F27]' wording="Red" />
+												<ColorSelector patternType="jersey" colorClass='bg-[#FFFFFF]' wording="White" />
+											</div>
+											<ColorSelectorHeading text="TAP TO CHANGE COLOR GROUP" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="pattern-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-1">
+									<PatternList patternType="jersey"><Jersey001 /></PatternList>
+									<PatternList patternType="jersey"><Jersey002 /></PatternList>
+									<PatternList patternType="jersey"><Jersey003 /></PatternList>
+									<PatternList patternType="jersey"><Jersey004 /></PatternList>
+									<PatternList patternType="jersey"><Jersey005 /></PatternList>
+									<PatternList patternType="jersey"><Jersey006 /></PatternList>
+									<PatternList patternType="jersey"><Jersey007 /></PatternList>
+									<PatternList patternType="jersey"><Jersey008 /></PatternList>
+									<PatternList patternType="jersey"><Jersey009 /></PatternList>
+									<PatternList patternType="jersey"><Jersey010 /></PatternList>
+									<PatternList patternType="jersey"><Jersey011 /></PatternList>
+									<PatternList patternType="jersey"><Jersey012 /></PatternList>
+									<PatternList patternType="jersey"><Jersey013 /></PatternList>
+								</div>
+							</div>
+
+							<div class="color-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-0">
+									<AllColorList patternType="jersey" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Logo Designer -->
+						<div class="jersey-design__jersey-designer p-4 sm:p-6 h-[480px] bg-[#feffff] relative" pattern-type="logo">
+							<div class="selected-header flex flex-col items-center justify-between h-full">
+								<div class="">
+									<div class="flex flex-col gap-4">
+										<PatternSelector patternType="logo">
+											<Logo001 />
+										</PatternSelector>
+										<SelectorHeading text="TAP TO CHANGE" />
+									</div>
+								</div>
+								<div class="custom-scrollbar overflow-y-auto max-h-[200px] h-fit">
+									<div class="flex justify-end">
+										<div class="flex flex-col gap-4">	
+											<div class="flex flex-wrap gap-2">
+												<ColorSelector patternType="logo" colorClass='bg-[#131410]' wording="Black" />
+												<ColorSelector patternType="logo" colorClass='bg-[#1765B1]' wording="Blue" />
+												<ColorSelector patternType="logo" colorClass='bg-[#E91F27]' wording="Red" />
+												<ColorSelector patternType="logo" colorClass='bg-[#FFFFFF]' wording="White" />
+											</div>
+											<ColorSelectorHeading text="TAP TO CHANGE COLOR GROUP" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="pattern-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-col gap-4 sm:gap-6">
+									<div>
+										<div class="border-[2px] border-solid border-[#5C17E5] rounded-[16px] p-3 cursor-pointer">
+											<div class="upload-logo-trigger flex items-center gap-3 justify-center">
+												<img
+													src="/shared/icon-upload.svg"
+													class="jersey-design__save-pattern--back"
+													pattern-type="logo"
+													width="24" height="24" alt="Upload"
+												>
+												<span
+													class="text-[#5C17E5] text-base font-medium leading-normal"
+													pattern-type="logo"
+												>
+													Upload your logo
+												</span>
+											</div>
+										</div>
+									</div>
+	
+									<div class="relative">
+										<div class="bg-[#CBD4E1] h-[1px] w-full absolute left-0 top-[50%]"></div>
+										<div class="text-[#728197] text-sm font-normal leading-normal mx-auto w-fit px-3 relative bg-white">or</div>
+									</div>
+	
+									<div class="flex flex-col gap-6">
+										<div class="flex justify-between md:items-center max-md:flex-col gap-3">
+											<span class="text-[#000] text-lg font-bold leading-normal">
+												Choose from our collection
+											</span>
+											<span class="text-[#728197] text-base font-bold leading-normal cursor-pointer">
+												Can't find it? <span class="contact-logo-trigger text-[#5C17E5]">Contact us.</span>
+											</span>
+										</div>
+										<div class="flex flex-wrap gap-1">
+											<PatternList patternType="logo"><Logo001 /></PatternList>
+											<PatternList patternType="logo"><Logo002 /></PatternList>
+											<PatternList patternType="logo"><Logo003 /></PatternList>
+											<PatternList patternType="logo"><Logo004 /></PatternList>
+											<PatternList patternType="logo"><Logo005 /></PatternList>
+											<PatternList patternType="logo"><Logo001 /></PatternList>
+											<PatternList patternType="logo"><Logo002 /></PatternList>
+											<PatternList patternType="logo"><Logo003 /></PatternList>
+											<PatternList patternType="logo"><Logo004 /></PatternList>
+											<PatternList patternType="logo"><Logo005 /></PatternList>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="color-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-0">
+									<AllColorList patternType="logo" />
+								</div>
+							</div>
+
+							<LogoUploadModal />
+							<LogoContactModal />
+						</div>
+
+						<!-- Font Designer -->
+						<div class="jersey-design__jersey-designer h-[480px] bg-[#feffff]" pattern-type="font">
+							<div class="py-4 px-6 grid grid-cols-3 gap-4 h-fit">
+								<div class="col-span-2">
+									<Input placeholder="Name of Jersey" name="Name of Jersey" />
+								</div>
+								<div class="col-span-1">
+									<Input placeholder="Number" name="Number" />
+								</div>
+							</div>
+							<div class="bg-[#27313F] h-full w-full overflow-y-auto p-6 pb-[80px]">
+								<div class="flex flex-col gap-2">
+									<FontSelector fontClass="font-1 active" />
+									<FontSelector fontClass="font-2" />
+									<FontSelector fontClass="font-3" />
+									<FontSelector fontClass="font-4" />
+									<FontSelector fontClass="font-5" />
+									<FontSelector fontClass="font-6" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Pant Designer -->
+						<div class="jersey-design__jersey-designer p-4 sm:p-6 h-[480px] bg-[#feffff]" pattern-type="pant">
+							<div class="selected-header flex flex-col items-center justify-between h-full">
+								<div class="">
+									<div class="flex flex-col gap-4">
+										<PatternSelector patternType="pant">
+											<Pant001 />
+										</PatternSelector>
+										<SelectorHeading text="TAP TO CHANGE" />
+									</div>
+								</div>
+								<div class="custom-scrollbar overflow-y-auto max-h-[200px] h-fit">
+									<div class="flex justify-end">
+										<div class="flex flex-col gap-4">
+											<div class="flex flex-wrap gap-2">
+												<ColorSelector patternType="pant" colorClass='bg-[#131410]' wording="Black" />
+												<ColorSelector patternType="pant" colorClass='bg-[#1765B1]' wording="Blue" />
+												<ColorSelector patternType="pant" colorClass='bg-[#E91F27]' wording="Red" />
+												<ColorSelector patternType="pant" colorClass='bg-[#FFFFFF]' wording="White" />
+											</div>
+											<ColorSelectorHeading text="TAP TO CHANGE COLOR GROUP" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="pattern-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-1">
+									<PatternList patternType="pant"><Pant001 /></PatternList>
+									<PatternList patternType="pant"><Pant002 /></PatternList>
+									<PatternList patternType="pant"><Pant003 /></PatternList>
+									<PatternList patternType="pant"><Pant004 /></PatternList>
+									<PatternList patternType="pant"><Pant005 /></PatternList>
+									<PatternList patternType="pant"><Pant006 /></PatternList>
+									<PatternList patternType="pant"><Pant007 /></PatternList>
+									<PatternList patternType="pant"><Pant008 /></PatternList>
+									<PatternList patternType="pant"><Pant009 /></PatternList>
+									<PatternList patternType="pant"><Pant010 /></PatternList>
+								</div>
+							</div>
+
+							<div class="color-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-0">
+									<AllColorList patternType="pant" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Sock Designer -->
+						<div class="jersey-design__jersey-designer p-4 sm:p-6 h-[480px] bg-[#feffff]" pattern-type="sock">
+							<div class="selected-header flex flex-col items-center justify-between h-full">
+								<div class="">
+									<div class="flex flex-col gap-4">
+										<PatternSelector patternType="sock">
+											<Sock001 />
+										</PatternSelector>
+										<SelectorHeading text="TAP TO CHANGE" />
+									</div>
+								</div>
+								<div class="custom-scrollbar overflow-y-auto max-h-[200px] h-fit">
+									<div class="flex justify-end">
+										<div class="flex flex-col gap-4">	
+											<div class="flex flex-wrap gap-2">
+												<ColorSelector patternType="sock" colorClass='bg-[#131410]' wording="Black" />
+												<ColorSelector patternType="sock" colorClass='bg-[#1765B1]' wording="Blue" />
+												<ColorSelector patternType="sock" colorClass='bg-[#E91F27]' wording="Red" />
+												<ColorSelector patternType="sock" colorClass='bg-[#FFFFFF]' wording="White" />
+											</div>
+											<ColorSelectorHeading text="TAP TO CHANGE COLOR GROUP" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="pattern-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-1">
+									<PatternList patternType="sock"><Sock001 /></PatternList>
+									<PatternList patternType="sock"><Sock002 /></PatternList>
+									<PatternList patternType="sock"><Sock003 /></PatternList>
+									<PatternList patternType="sock"><Sock004 /></PatternList>
+									<PatternList patternType="sock"><Sock005 /></PatternList>
+									<PatternList patternType="sock"><Sock006 /></PatternList>
+									<PatternList patternType="sock"><Sock007 /></PatternList>
+									<PatternList patternType="sock"><Sock008 /></PatternList>
+									<PatternList patternType="sock"><Sock009 /></PatternList>
+									<PatternList patternType="sock"><Sock010 /></PatternList>
+								</div>
+							</div>
+
+							<div class="color-list pb-10 custom-scrollbar overflow-y-auto h-full">
+								<div class="flex flex-wrap gap-0">
+									<AllColorList patternType="sock" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Main Deisng Panel End -->
+
+				<!-- Main Deisng Panel Trigger -->
+				<div class="fixed bottom-0 left-[50%] w-fit -translate-x-1/2">
+					<div class="max-w-[620px] mx-auto pb-10 flex justify-end">
+						<img
+							src="/shared/rounded-pallete.jpg"
+							class="jersey-main-designer__trigger w-10 rounded-[40px] cursor-pointer"
+							pattern-type="logo"
+							width="40" height="40" alt=""
+						>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 </Layout>
+
+<script>
+	// Open Main Designer
+	for (const trigger of document.querySelectorAll(".jersey-main-designer__trigger")) {
+        trigger.addEventListener('click', function() {
+			document.querySelector('.jersey-main-designer')?.classList.add('active');
+			document.querySelector('.jersey-main-preview')?.classList.add('inactive');
+        });
+    }
+	// Close Main Designer
+	for (const trigger of document.querySelectorAll(".jersey-main-preview")) {
+        trigger.addEventListener('click', function() {
+			if (trigger.classList.contains('inactive')) {
+				document.querySelector('.jersey-main-designer')?.classList.remove('active');
+				document.querySelector('.jersey-main-preview')?.classList.remove('inactive');
+			}
+        });
+    }
+	
+	// Top Tab click
+    for (const tab of document.querySelectorAll(".jersey-design__tab")) {
+        tab.addEventListener('click', function() {
+            for (const oneTab of document.querySelectorAll(".jersey-design__tab")) {
+				oneTab.classList.remove('active');
+			}
+			tab.classList.add('active');
+
+			const patternType = tab.getAttribute("pattern-type");
+			for (const designer of document.querySelectorAll(".jersey-design__jersey-designer")) {
+				designer.classList.remove('active');
+			}
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + ']')?.classList.add('active');
+
+			let previewItemType = patternType;
+			if (previewItemType == "logo" || previewItemType == 'font') {
+				previewItemType = "jersey"
+			}
+			for (const previewItem of document.querySelectorAll(".jersey-main-preview__item")) {
+				previewItem.classList.add('hidden');
+			}
+			document.querySelector('.jersey-main-preview__item[pattern-type=' + previewItemType + ']')?.classList.remove('hidden');
+        });
+    }
+
+	// Pattern selector click
+    for (const patternSelector of document.querySelectorAll(".pattern-selector")) {
+        patternSelector.addEventListener('click', function() {
+			const patternType = patternSelector.getAttribute("pattern-type");
+			
+			const savePatternHeading = document.querySelector('.jersey-design__save-pattern--heading[pattern-type=' + patternType + ']');
+			if (savePatternHeading) {
+				savePatternHeading.textContent = "Select a pattern";
+			}
+
+			document.querySelector('.jersey-design__tabs')?.classList.add('!hidden');
+			document.querySelector('.jersey-design__save-pattern[pattern-type=' + patternType + ']')?.classList.remove('hidden');
+            
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .selected-header')?.classList.add('hidden');
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .pattern-list')?.classList.add('active');
+        });
+    }
+	// Color selector click
+    for (const colorSelector of document.querySelectorAll(".color-selector")) {
+        colorSelector.addEventListener('click', function() {
+			const patternType = colorSelector.getAttribute("pattern-type");
+
+			const savePatternHeading = document.querySelector('.jersey-design__save-pattern--heading[pattern-type=' + patternType + ']');
+			if (savePatternHeading) {
+				savePatternHeading.textContent = "Select a color";
+			}
+
+			document.querySelector('.jersey-design__tabs')?.classList.add('!hidden');
+			document.querySelector('.jersey-design__save-pattern[pattern-type=' + patternType + ']')?.classList.remove('hidden');
+            
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .selected-header')?.classList.add('hidden');
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .color-list')?.classList.add('active');
+        });
+    }
+
+	// Back Button click
+    for (const backButton of document.querySelectorAll(".jersey-design__save-pattern--back")) {
+        backButton.addEventListener('click', function() {
+			const patternType = backButton.getAttribute("pattern-type");
+
+			document.querySelector('.jersey-design__tabs')?.classList.remove('!hidden');
+			document.querySelector('.jersey-design__save-pattern[pattern-type=' + patternType + ']')?.classList.add('hidden');
+            
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .selected-header')?.classList.remove('hidden');
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .pattern-list')?.classList.remove('active');
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .color-list')?.classList.remove('active');
+        });
+    }
+	// Save Button click
+    for (const saveButton of document.querySelectorAll(".jersey-design__save-pattern--save")) {
+        saveButton.addEventListener('click', function() {
+			const patternType = saveButton.getAttribute("pattern-type");
+
+			document.querySelector('.jersey-design__tabs')?.classList.remove('!hidden');
+			document.querySelector('.jersey-design__save-pattern[pattern-type=' + patternType + ']')?.classList.add('hidden');
+            
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .selected-header')?.classList.remove('hidden');
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .pattern-list')?.classList.remove('active');
+			document.querySelector('.jersey-design__jersey-designer[pattern-type=' + patternType + '] .color-list')?.classList.remove('active');
+        });
+    }
+
+	// Pattern List click
+	for (const listItem of document.querySelectorAll(".pattern-list-item")) {
+        listItem.addEventListener('click', function() {
+			const patternType = listItem.getAttribute("pattern-type");
+            for (const oneItem of document.querySelectorAll(`.pattern-list-item[pattern-type="${patternType}"]`)) {
+				oneItem.classList.remove('active');
+			}
+			listItem.classList.add('active');
+        });
+    }
+	// Color List click
+	for (const listItem of document.querySelectorAll(".color-list-item")) {
+        listItem.addEventListener('click', function() {
+			const patternType = listItem.getAttribute("pattern-type");
+            for (const oneItem of document.querySelectorAll(`.color-list-item[pattern-type="${patternType}"]`)) {
+				oneItem.classList.remove('active');
+			}
+			listItem.classList.add('active');
+        });
+    }
+
+	// Font list item click
+	for (const listItem of document.querySelectorAll(".font-list-item")) {
+        listItem.addEventListener('click', function() {
+            for (const oneItem of document.querySelectorAll(`.font-list-item`)) {
+				oneItem.classList.remove('active');
+			}
+			listItem.classList.add('active');
+        });
+    }
+
+	// Open/Close Logo Upload Modal
+    for (const trigger of document.querySelectorAll(".upload-logo-trigger")) {
+        trigger.addEventListener('click', function() {
+			document.querySelector('.modal-upload-logo')?.classList.remove('opacity-0', 'invisible');
+        });
+    }
+	for (const closeButton of document.querySelectorAll(".upload-logo-close")) {
+        closeButton.addEventListener('click', function() {
+			document.querySelector('.modal-upload-logo')?.classList.add('opacity-0', 'invisible');
+        });
+    }
+
+	// Open/Close Logo Contact Modal
+    for (const trigger of document.querySelectorAll(".contact-logo-trigger")) {
+        trigger.addEventListener('click', function() {
+			document.querySelector('.modal-contact-logo')?.classList.remove('opacity-0', 'invisible');
+        });
+    }
+	for (const closeButton of document.querySelectorAll(".contact-logo-close")) {
+        closeButton.addEventListener('click', function() {
+			document.querySelector('.modal-contact-logo')?.classList.add('opacity-0', 'invisible');
+        });
+    }
+</script>

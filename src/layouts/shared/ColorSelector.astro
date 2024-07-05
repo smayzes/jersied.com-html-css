@@ -1,0 +1,20 @@
+---
+interface Props {
+	colorClass: string;
+    patternType: string;
+    wording: string;
+}
+
+const { colorClass, patternType, wording } = Astro.props;
+---
+
+<div
+    class:list={['group color-selector border-2 border-solid border-[#c5c5c5] w-[50px] h-[50px] md:w-[64px] md:h-[64px] cursor-pointer flex items-end justify-center pb-1', 
+    colorClass, wording]}
+    pattern-type={patternType}
+    color={colorClass}
+>
+    <span class="text-white group-[.White]:text-[#808080] text-xs text-bold uppercase">
+        {wording}
+    </span>
+</div>
