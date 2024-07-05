@@ -1,0 +1,54 @@
+---
+import Input from './Input.astro';
+import Textarea from './Textarea.astro';
+---
+<div class="modal-contact-logo opacity-0 invisible absolute w-full h-full top-0 left-0 bg-[#1A212B99] z-10 duration-200">
+    <div class="flex items-end w-full h-full">
+        <div class="w-full mt-[10%] bg-[#fff] rounded-t-[12px]">
+            <form action="/upload-logo">
+                <div class="flex flex-col">
+                    <div class="flex justify-center bg-[#1d2848] p-2 rounded-t-[12px]">
+                        <h3 class="text-[#fff] text-lg font-bold leading-normal text-center">
+                            Contact Us
+                        </h3>
+                    </div>
+            
+                    <div class="p-6 flex flex-col gap-6">
+                        <p class="text-[#1d2848] text-sm md:text-xl font-semibold leading-normal">
+                            Haven't found the perfect logo in our collection?  Fill out the form below to share your unique design with us. Help us make our collection even better!
+                        </p>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <Input placeholder="Your name" name="Your name" />
+                                <Input placeholder="Your email address" name="Your email address" />
+                            </div>
+                            <Textarea placeholder="Provide a brief description of your logo design" name="Provide a brief description of your logo design" />
+                        </div>
+        
+                        <div class="border border-dashed border-[#9AA8BC] rounded-[8px] py-5 px-4">
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="flex flex-col items-center gap-1">
+                                    <p class="text-[#1A212B] text-sm font-normal leading-normal">
+                                        Drag and drop your file here
+                                    </p>
+                                    <p class="text-[#728197] text-xs font-normal leading-normal">
+                                        or
+                                    </p>
+                                </div>
+                                <input type="file" id="myfile" name="myfile" class="w-fit max-w-[200px]">
+                            </div>
+                        </div>
+        
+                        <div class="grid grid-cols-2 gap-4">
+                            <p class="contact-logo-close button-secondary w-full">
+                                Cancel
+                            </p>
+                            <input type="submit" value="Upload" class="button-primary w-full">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

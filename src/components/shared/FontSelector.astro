@@ -1,0 +1,15 @@
+---
+interface Props {
+	fontClass: string;
+}
+
+const { fontClass } = Astro.props;
+---
+
+<div class:list={['font-list-item flex items-center gap-6 cursor-pointer', fontClass]}>
+    <div class="font-list-item__radio block h-[24px] w-[24px] rounded-[30px] bg-white min-w-[24px]"></div>
+    <div class="flex-1 grid grid-cols-2">
+        <div class="font-medium text-[30px] sm:text-[44px] text-white">ABCD</div>
+        <div class="font-bold text-[30px] sm:text-[44px] text-white">1234</div>
+    </div>
+</div>
